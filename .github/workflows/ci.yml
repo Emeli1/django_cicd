@@ -6,7 +6,7 @@ on:
 
 jobs:
   testing:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     env:
       SECRET_KEY: ${{ secrets.SECRET }}
       DEBUG: ${{ secrets.DEBUG_MODE }}
@@ -33,7 +33,7 @@ jobs:
           --health-retries 5
 
     steps:
-      - name: Проверяем наличие изменений
+      - name: Проверка на наличие изменений
         uses: actions/checkout@v4
 
       - name: Установка python
@@ -41,7 +41,7 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Установить зависимости
+      - name: Установка зависимостей
         run: pip install -r requirements.txt
 
       - name: Линтинг
@@ -50,9 +50,9 @@ jobs:
       - name: Тестирование
         run: python manage.py test
         env:
-          SECRET_KEY: ${{ env.SECRET }}
-          DEBUG: ${{ env.DEBUG_MODE }}
-          ALLOWED: ${{ env.ALLOWED_HOSTS }}
+          SECRET_KEY: ${{ env.SECRET_KEY }}
+          DEBUG: ${{ env.DEBUG }}
+          ALLOWED_HOSTS: ${{ env.ALLOWED }}
           DB_ENGINE: ${{ env.DB_ENGINE }}
           DB_NAME: ${{ env.DB_NAME }}
           DB_USER: ${{ env.DB_USER }}
