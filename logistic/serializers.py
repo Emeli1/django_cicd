@@ -6,7 +6,7 @@ class ProductSerializer(serializers.ModelSerializer):
     # настройте сериализатор для продукта
     class Meta:
         model = Product
-        fields = ['id' , 'title', 'description']
+        fields = ['id', 'title', 'description']
 
 
 class ProductPositionSerializer(serializers.ModelSerializer):
