@@ -2,7 +2,7 @@ name: Testing and deployment
 
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 jobs:
   testing:
