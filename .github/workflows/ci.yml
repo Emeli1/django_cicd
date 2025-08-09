@@ -31,7 +31,6 @@ jobs:
           --health-interval 5s
           --health-timeout 5s
           --health-retries 5
-
     steps:
       - name: Проверка на наличие изменений
         uses: actions/checkout@v4
